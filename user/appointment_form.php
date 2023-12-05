@@ -2,7 +2,8 @@
 session_start();
 require_once '../classess/user.class.php';
 require_once '../tools/functions.php';
-require_once('../tools/user_functions.php');
+require_once '../tools/user_functions.php';
+require_once '../classess/db.php';
 
 // Check if the user is not logged in
 if (!isset($_SESSION['id'])) {
@@ -21,44 +22,29 @@ if (!$record) {
     exit();
 }
 
-$name = '';
-$email = '';
-$contact = '';
-$petName = '';
-$petAge = '';
-$petType ='';
-
-if (is_array($record)) {
-    $name = $record['name'];
-    $email = $record['email'];
-    $contact = $record['contact'];
-    $petName = $record['petName'];
-    $petType = $record['petType'];
-    $petAge = $record['petAge'];
-
-} else {
-    // Handle the case where $record is not an array
-    // For example, you might set default values or display an error message
-    echo "Error: User data not found.";
-}
+$name = $record['name'];
+$email = $record['email'];
+$contact = $record['contact'];
+$petName = $record['petName'];
+$petAge = $record['petAge'];
+$petType = $record['petType'];
 
 // Initialize variables with user data or form submission data
 $newName = isset($_POST['name']) ? $_POST['name'] : $name;
 $newEmail = isset($_POST['email']) ? $_POST['email'] : $email;
 $newContact = isset($_POST['phone']) ? $_POST['phone'] : $contact;
-$newPetName = isset($_POST['petType']) ? $_POST['petType'] : $petName;
-$newPassword = isset($_POST['petAge']) ? $_POST['petAge'] : $petAge; // Ensure you want to clear the password on each edit
+$newPetName = isset($_POST['petName']) ? $_POST['petName'] : $petName;
 $newPetType = isset($_POST['petType']) ? $_POST['petType'] : $petType;
 $newPetAge = isset($_POST['petAge']) ? $_POST['petAge'] : $petAge;
 
+
 // Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Assign form submission values to variables
     $newName = isset($_POST['name']) ? $_POST['name'] : '';
     $newEmail = isset($_POST['email']) ? $_POST['email'] : '';
     $newContact = isset($_POST['phone']) ? $_POST['phone'] : $contact;
-    $newPetName = isset($_POST['petType']) ? $_POST['petType'] : '';
-    $newPassword = isset($_POST['petAge']) ? $_POST['petAge'] : '';
+    $newPetName = isset($_POST['petName']) ? $_POST['petName'] : '';
     $newPetType = isset($_POST['petType']) ? $_POST['petType'] : '';
     $newPetAge = isset($_POST['petAge']) ? $_POST['petAge'] : '';
 
@@ -73,8 +59,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
     ) {
         try {
             // Update user data
-            $user->insertUserData($newName, $newEmail, $newContact, $newPetName, $newPetType, $newPetAge);
-            // Optionally, update the session variables with the new data
+            $user->insertUserData(
+                $newName,
+                $newEmail,
+                $newContact,
+                $newPetName,
+                $newPetType,
+                $newPetAge,
+                $_POST['doctor'],
+                $_POST['date'],
+                $_POST['time'],
+                $_POST['symptoms'],
+                $_POST['petAmount']
+            );
+
+            // set to new data - carl
             $_SESSION['user_name'] = $newName;
             $_SESSION['user_email'] = $newEmail;
             $_SESSION['user_contact'] = $newContact;
@@ -82,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
             $_SESSION['user_pettype'] = $newPetType;
             $_SESSION['new_petage'] = $newPetAge;
 
-            header("Location: ./appointment_form.php");
+            header("Location: ./appointment_list.php");
             exit();
         } catch (Exception $e) {
             echo "Error updating user data: " . $e->getMessage();
@@ -140,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
                 <h2 class="heading">
                     Appointment
                 </h2>
-                <form action="appointment_list.php" method="post" onsubmit=" return validateForm();">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" onsubmit="return validateForm();">
                 <div id="error-message" class="error-message">All fields are required.</div>
 
                     <div class="form-group row">
@@ -285,7 +284,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
 
                     <div class="form-group row justify-content-end">
                         <div class="col-sm-5">
-                            <button class="form_btn" type="submit" onclick="validateForm()">
+                            <button class="form_btn" type="submit" name="action" value="save" onclick="validateForm()">
                                 Book Now
                             </button>
                         </div>

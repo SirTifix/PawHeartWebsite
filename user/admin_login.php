@@ -85,7 +85,7 @@ mysqli_close($conn);
               <div class="box1">
                   <h1>Admin Login</h1>
 
-                  <form action="" method="post">
+                  <form action="../admin/admin.php" method="post">
                       <label for="">Email</label>
                       <input type="email" placeholder="Enter email" name="email" id="email">
 

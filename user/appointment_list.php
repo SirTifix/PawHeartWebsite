@@ -22,14 +22,12 @@ $stmt->bind_param('s', $_SESSION['email']);
 $stmt->execute();
 $result = $stmt->get_result();
 
-echo "Session Email: " . $_SESSION['email'];  // Debugging output
 
 if (!$result) {
     die("Paw query failed: " . $conn->error);
 }
 
 if ($result->num_rows > 0) {
-    echo "Email found in 'paw' table.";  // Debugging output
     
     // Fetch data from the 'appointment' table
     $appointmentSql = "SELECT * FROM appointment WHERE email = ?";
@@ -66,14 +64,14 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://kit.fontawesome.com/f584623432.js" crossorigin="anonymous"></script>
     <title>Book Appointment</title>
-<body>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
 <?php
   require_once('../include/header.loggedin.php');
 ?>   
 <!-- Appointments List -->
-<div class="container mt-3">
+<main style="flex:1;">
+    <div class="container mt-3">
         <h2 class="text-center mb-4">Appointment List</h2>
-
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead>
@@ -120,13 +118,16 @@ if (isset($appointmentResult) && $appointmentResult->num_rows > 0) {
                 </tbody>
             </table>
         </div>
-    <?php require_once('../include/footer.php'); ?>
-
+</div>
+</main>
+        
+   
     <?php
     // Close the database connection
     $conn->close();
     ?>
 
+<?php require_once('../include/footer.php'); ?>
 
 </body> 
 
