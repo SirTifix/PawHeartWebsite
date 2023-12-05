@@ -1,0 +1,228 @@
+
+/* ======== NAV Bar css ======= */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
+@font-face {
+  font-family: "Urbanist-VariableFont" ;
+  src: url(Urbanist-VariableFont_wght.ttf);
+}
+
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1em;
+    font-family: "Urbanist-VariableFont";
+}
+
+.bg-red{
+    background-color: #D80032;
+}
+
+.bg-pink{
+    background-color: #F78CA2;
+}
+
+.color-red{
+    color: #D80032;
+}
+
+.color-pink{
+    color: #F78CA2;
+}
+
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link{
+    color: #D80032
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: #F78CA2;
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+    color: #D80032;
+}
+
+header{
+    box-shadow: 2px 2px 4px #F78CA2;
+}
+
+.navbar-logo {
+    height: auto ;
+    width: 19%;
+}
+
+img.navbar-logo{
+    width: 150px;
+    
+}
+
+
+/* booking css */
+.wrapper{
+  margin-top: 6%;
+  margin-bottom: 6%;
+}
+body {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+	letter-spacing: 1px;
+	background-color: rgb(248, 219, 219);
+  
+}
+
+.Form {
+	background-color: #f7f7f7;
+	max-width: 1000px;
+	margin: 0px auto;
+	box-shadow: 0px 0px 7px 0px #fab4eb;
+	display: flex;
+	
+}
+
+.container-time {
+	background-color: #f7bcc4;
+	padding: 50px;
+	outline: 3px dashed #f84b4b;
+	outline-offset: -30px;
+	text-align: center;
+}
+.heading {
+	font-size: 35px;
+	text-transform: uppercase;
+}
+
+.heading-days {
+	color:#f84b4b;
+	font-size: 30px;
+
+}
+
+.heading-phone {
+	font-size: 20px;
+}
+.container-form {
+	padding: 20px 0;
+	margin: 0 auto;
+	color: #000;
+}
+form {
+	display: grid;
+	grid-row-gap: 20px;
+}
+form p {
+	font-weight: 600;
+}
+.form-field {
+	display: flex;
+	justify-content: space-between;
+}
+
+input,select {
+	pad: 10px 15px;
+}
+
+
+select,textarea {
+  width: 93%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-field p{
+    font-size: 13px;
+}
+
+@media screen and (max-width: 768px) {
+	.container {
+		flex-direction: column;
+	}
+	.container-form  {
+		padding: 10px;
+	}
+	.heading-phone {
+		font-size: 17px;
+	}
+
+	
+}
+
+@media screen and (min-width: 768px) and (max-width: 880px) {
+	.container-time {
+		padding: 30px;
+	}
+	.container-form  {
+		padding: 10px;
+	}
+	
+	
+}
+
+
+@media only screen and (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 2.5rem 0;
+    }
+
+   
+    div .dog-showcase2{
+        width: 500px;
+        max-width: 100%;
+        height: auto;
+        padding-top: 3%;
+        padding: 5px;
+    } 
+    .banner1{
+        flex-wrap: wrap;
+        padding-left: 0%;
+        padding: 2%;
+        
+    }
+    #cont2{
+        font-size: 20px;
+    }
+    .navbar-logo {
+        height: auto ;
+        width: 39%;
+        border-radius: 100%;
+    }
+    
+}
+@media screen and (min-width: 768px) {
+    #banner1 div{
+        align-items: normal;
+    }
+    
+  
+}
+
+@media screen and (max-width: 1024px) {
+   #cont2{
+    font-size: 25px;
+   }
+
+   .navbar-logo {
+    height: auto ;
+    width: 39%;
+    border-radius: 100%;
+}
+ 
+}
+

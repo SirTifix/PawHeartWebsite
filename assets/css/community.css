@@ -1,0 +1,33 @@
+.community{
+    background-color: pink;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+}
+.community h2{
+    text-align: center;
+    margin: 15px;
+    padding: 10px;
+}
+
+.community p{
+    text-align: start;
+    padding: 5px;
+    font-size: 1.5em;
+}
+.btn-community{
+    border: none;
+    background-color: rgb(220, 121, 137);
+    margin: 10px;
+    padding: 8px;
+    border-radius: 15px;
+}
+.btn-community a{
+    color: #fff;
+    font-size: 1.5em;
+}
+.paw{
+    width: 40px;
+    height: 20px;
+    transform: rotate(-10deg);
+}

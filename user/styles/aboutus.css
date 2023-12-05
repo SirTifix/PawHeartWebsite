@@ -1,0 +1,72 @@
+/* =============About Us page ============= */
+.paragraph-one{
+    margin: 50px;
+}
+.paragrahp-client{
+    font-size: 1.5em;
+    }
+
+div .about-pic{
+    width: 700px;
+    max-width: 100%;
+    height: auto;
+}
+div .second-sec{
+    margin-top: 50px;
+}
+div .about-pic-sec{
+    width: 400px;
+    max-width: 100%;
+    height: auto;
+}
+.paw{
+    width: 40px;
+    height: 20px;
+    transform: rotate(-10deg);
+}
+.collapsible {
+    background-color: #F78CA2;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    border-color: #f7bcc4;
+    text-align: left;
+    outline: none;
+    font-size: 1.5em;
+  }
+  
+.collapsible:after {
+    content: "\27A4";
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+
+.active:after {
+    transform: rotate(90deg);
+  }
+.collapsible:hover {
+    color: #f72f4a;
+    background-color: #f7bcc4;
+  }
+  
+  .content {
+    font-size: 1em;
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #c76d7f;
+  }
+
+.FAQ h1{
+    text-align: center;
+    margin: 20px;
+}
+.p-faq{
+    color: white;
+    font-size: 1.5em;
+}
+
